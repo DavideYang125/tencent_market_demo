@@ -12,33 +12,33 @@ namespace TencentMarket.API.Models.ViewModels
     public class UserInfo
     {
         [JsonProperty("token")]
-        public string Token { get; set; }
+        public string token { get; set; }
 
         [JsonProperty("click_id")]
-        public string ClickId { get; set; }
+        public string click_id { get; set; }
 
         /// <summary>
         /// 姓名
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string name { get; set; }
 
         /// <summary>
         /// 联系方式
         /// </summary>
         [JsonProperty("phone")]
-        public string Phone { get; set; }
+        public string phone { get; set; }
 
         /// <summary>
         /// 最高学历
         /// </summary>
         [JsonProperty("highest_edu")]
-        public string HighestEdu { get; set; }
+        public string highest_edu { get; set; }
 
         /// <summary>
         /// 工作年限
         /// </summary>
         [JsonProperty("work_years")]
-        public string WorkYears { get; set; }
+        public string work_years { get; set; }
     }
 }

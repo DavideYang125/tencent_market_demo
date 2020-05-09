@@ -22,25 +22,34 @@ namespace TencentMarket.API.Controllers
 
         }
 
+        /// <summary>
+        /// 落地页提交操作
+        /// </summary>
+        /// <param name="userInfo"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<HttpResponseMessage> AddAsync([FromBody] UserInfo userInfo)
         {
-            userInfo.Phone = userInfo.Phone.Trim();
-
-            if (!IsDebug)
+            userInfo.phone = userInfo.phone.Trim();
+            try
             {
-                var hash = EncryExtension.MD5Hash(userInfo.Phone);
-                if (hash != userInfo.Token)
-                {
-                    HttpResponseMessage errResponse = Request.CreateResponse(HttpStatusCode.Unauthorized, "Invalid Token");
-                    return errResponse;
-                }
-            }
+                //md5校验  由于企划部写页面的同事不会用md5，因此这个功能暂时注释
 
-            var result = await service.ActionUp(userInfo);
-            return result;
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, "OK");
-            return response;
+                //var hash = EncryExtension.MD5Hash(userInfo.phone);
+                //if (hash != userInfo.token)
+                //{
+                //    HttpResponseMessage errResponse = Request.CreateResponse(HttpStatusCode.Unauthorized, "Invalid Token");
+                //    return errResponse;
+                //}
+
+                var result = await service.ActionUp(userInfo);
+                return result;
+            }
+            catch
+            {
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, "Exception");
+                return response;
+            }
         }
     }
 }
